@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<meta name="viewport" content="width=device-width" />
+	<title>My page title</title>
+
+	<!-- Resets must be added here before any sveltekit injected styles -->
+	<link rel="stylesheet" href="%sveltekit.assets%/tw-reset.css" />
+	<!-- Place other styles here that you want component based styles to be able to override -->
+	<link rel="stylesheet" href="%sveltekit.assets%/tw-prose.css" />
+
+	%sveltekit.head%
+</head>
+<script>
+	const localDark = window.localStorage.getItem('dark')
+	let isDark = localDark === 'true';
+	if (!localDark) {
+		isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+	}
+
+	if (isDark) {
+		window.document.documentElement.classList.add('dark');
+		window.document.documentElement.setAttribute('style', 'color-scheme: dark;');
+	}
+</script>
+
+<body data-sveltekit-prefetch>
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
+</html>
