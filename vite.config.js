@@ -8,7 +8,10 @@ const config = {
 			mode: 'svelte-scoped'
 		}),
 		sveltekit()
-	]
+	],
+	server: {
+		cors: false
+	}
 };
 
 export default config;
